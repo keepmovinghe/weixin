@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="xstream-1.4.8">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/xstream-1.4.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dom4j-1.6.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

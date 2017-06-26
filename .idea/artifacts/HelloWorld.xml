@@ -9,6 +9,9 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="log4j-1.2.17" />
+          <element id="library" level="project" name="xstream-1.4.8" />
+          <element id="library" level="project" name="xstream-1.4.10" />
+          <element id="library" level="project" name="xmlpull_1_0_5" />
         </element>
       </element>
     </root>
