@@ -11,6 +11,18 @@
         <servlet-name>coreServlet</servlet-name>
         <url-pattern>/coreServlet</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Lo4jInitServlet</servlet-name>
+        <servlet-class>com.keep.servlet.Log4jInitServlet</servlet-class>
+        
+        <init-param>
+            <param-name>log4j-properties-location</param-name>
+            <param-value>WEB-INF/classes/log4j.properties</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

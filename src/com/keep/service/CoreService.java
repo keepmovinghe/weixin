@@ -2,6 +2,8 @@ package com.keep.service;
 
 import com.keep.message.resp.TextMessage;
 import com.keep.utils.MessageUtil;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -12,6 +14,8 @@ import java.util.Map;
  * Created by hdb on 2017/6/26.
  */
 public class CoreService {
+
+    private static final Logger logger = LogManager.getLogger(CoreService.class);
 
     public static String processRequest(HttpServletRequest request){
         // XML 格式的消息数据
@@ -28,11 +32,9 @@ public class CoreService {
             // 消息类型
             String msgType = requestMap.get("MsgType");
 
-            System.out.println("--------------------------");
-            System.out.println("fromUserName:"+fromUserName);
-            System.out.println("toUserName:"+toUserName);
-            System.out.println("msgType:"+msgType);
-            System.out.println("--------------------------");
+            logger.info("fromUserName:"+fromUserName);
+            logger.info("toUserName:"+toUserName);
+            logger.info("msgType:"+msgType);
 
             // 回复文本消息
             TextMessage textMessage = new TextMessage();
@@ -103,7 +105,7 @@ public class CoreService {
             textMessage.setContent(respContent);
             respXml = MessageUtil.messageToXml(textMessage);
         }catch (Exception e){
-            e.printStackTrace();
+            logger.error("{}",e);
         }
 
         return respXml;

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 
 /**
  * Created by hdb on 2017/6/21.
@@ -30,12 +29,11 @@ public class CoreServlet extends HttpServlet {
         // 随机字符串
         String echostr = request.getParameter("echostr");
 
-        System.out.println("-------------------");
-        System.out.println("signature:"+signature);
-        System.out.println("timestamp:"+timestamp);
-        System.out.println("nonce:"+nonce);
-        System.out.println("echostr:"+echostr);
-        System.out.println("-------------------");
+        logger.info("signature:"+signature);
+        logger.info("timestamp:"+timestamp);
+        logger.info("nonce:"+nonce);
+        logger.info("echostr:"+echostr);
+
         // 若请求校验成功，则原样返回 echostr,表示接入成功，否则接入失败
         PrintWriter out = response.getWriter();
         if(SignUtil.checkSignature(signature,timestamp,nonce)){
