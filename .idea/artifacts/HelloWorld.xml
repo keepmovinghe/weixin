@@ -12,6 +12,7 @@
           <element id="library" level="project" name="xstream-1.4.8" />
           <element id="library" level="project" name="xstream-1.4.10" />
           <element id="library" level="project" name="xmlpull_1_0_5" />
+          <element id="library" level="project" name="commons-beanutils-1.8.0" />
         </element>
       </element>
     </root>

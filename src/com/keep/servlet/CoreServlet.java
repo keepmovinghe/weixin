@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 public class CoreServlet extends HttpServlet {
     private static final long serialVersionUID = 7700001531328067224L;
 
-    private static final Logger logger  = LogManager.getLogger(CoreServlet.class);
+    private static Logger logger  = LogManager.getLogger(CoreServlet.class);
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         logger.debug("请求参数："+request);
         // 微信加密签名

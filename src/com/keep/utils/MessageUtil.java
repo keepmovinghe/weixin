@@ -1,5 +1,6 @@
 package com.keep.utils;
 
+import com.keep.message.entity.Article;
 import com.keep.message.resp.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.core.util.QuickWriter;
@@ -41,14 +42,16 @@ public class MessageUtil {
 
     // 事件类型：subscribe（订阅）
     public static final String EVENT_TYPE_SUBSCRIBE = "subscribe";
-    // 事件类型：unsubscribe（消息订阅）
-    public static final String EVENT_TYPE_UNSUBSCRIBE = "UNSUBSCRIBE";
+    // 事件类型：unsubscribe（取消订阅）
+    public static final String EVENT_TYPE_UNSUBSCRIBE = "unsubscribe";
     // 事件类型：scan（关注用户扫描带参数的二维码）
     public static final String EVENT_TYPE_SCAN = "scan";
-    // 事件类型：location
-    public static final String EVENT_TYPE_LOCATION = "location";
-    // 事件类型：click（自定义菜单）
-    public static final String EVENT_TYPE_CLICK = "click";
+    // 事件类型：LOCATION
+    public static final String EVENT_TYPE_LOCATION = "LOCATION";
+    // 事件类型：CLICK（自定义菜单）
+    public static final String EVENT_TYPE_CLICK = "CLICK";
+    // 事件类型：VIEW
+    public static final String EVENT_TYPE_VIEW = "VIEW";
 
     // 响应消息类型：文本
     public static final String RESP_MESSAGE_TYPE_TEXT = "text";
@@ -180,6 +183,7 @@ public class MessageUtil {
      */
     public static String newsMessageToXml(NewsMessage newsMessage){
         xStream.alias("xml",newsMessage.getClass());
+        xStream.alias("item",new Article().getClass());
         return xStream.toXML(newsMessage);
     }
 
