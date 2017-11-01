@@ -1,7 +1,9 @@
 package com.keep.utils;
 
 /**
- * Created by hdb on 2017/6/28.
+ *
+ * @author chenxh
+ * @date 2017/6/28
  */
 public class Constant {
     // 开源中国

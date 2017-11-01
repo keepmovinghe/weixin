@@ -9,12 +9,14 @@ import org.apache.log4j.Logger;
 
 /**
  * 菜单管理类
- * Created by hdb on 2017/6/27.
+ *
+ * @author chenxh
+ * @date 2017/6/27
  */
 public class MenuManager {
     private static Logger logger = LogManager.getLogger(MenuManager.class);
-    private static final String APPID = "wx30e5fadbd254a9d6";
-    private static final String APPSECRET = "ee2abbe571abcf0aa6383213ece0dccc";
+    private static final String APPID = "APPID";
+    private static final String APPSECRET = "APPSECRET";
 
     private static Menu getMenu(){
         ClickButton btn11 = new ClickButton();

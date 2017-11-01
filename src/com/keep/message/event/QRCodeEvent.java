@@ -3,7 +3,9 @@ package com.keep.message.event;
 
 /**
  * 扫描带参数二维码事件
- * Created by hdb on 2017/6/23.
+ *
+ * @author chenxh
+ * @date 2017/6/23
  */
 public class QRCodeEvent extends BaseEvent {
     // 事件 KEY 值

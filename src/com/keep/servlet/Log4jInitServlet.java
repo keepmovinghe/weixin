@@ -15,7 +15,9 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by hdb on 2017/6/27.
+ *
+ * @author chenxh
+ * @date 2017/6/27
  */
 @WebServlet("/lo4jInitServlet")
 public class Log4jInitServlet extends HttpServlet {

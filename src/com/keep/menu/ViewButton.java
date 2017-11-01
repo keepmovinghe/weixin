@@ -2,7 +2,9 @@ package com.keep.menu;
 
 /**
  * view 类型按钮
- * Created by hdb on 2017/6/27.
+ *
+ * @author chenxh
+ * @date 2017/6/27
  */
 public class ViewButton extends Button {
     // 类型

@@ -3,9 +3,11 @@ package com.keep.message.event;
 
 /**
  * 上报地理位置类
- * Created by hdb on 2017/6/23.
+ *
+ * @author chenxh
+ * @date 2017/6/23
  */
-public class LocaltionEvent extends BaseEvent {
+public class LocationEvent extends BaseEvent {
     // 地理位置纬度
     private String Latitude;
     // 地理位置经度

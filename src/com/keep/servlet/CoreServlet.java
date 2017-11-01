@@ -12,7 +12,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by hdb on 2017/6/21.
+ *
+ * @author chenxh
+ * @date 2017/6/21
  */
 public class CoreServlet extends HttpServlet {
     private static final long serialVersionUID = 7700001531328067224L;

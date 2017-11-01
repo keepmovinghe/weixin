@@ -2,7 +2,9 @@ package com.keep.message.req;
 
 /**
  * 语音消息类
- * Created by hdb on 2017/6/23.
+ *
+ * @author chenxh
+ * @date 2017/6/23
  */
 public class VoiceMessage {
     // 媒体 ID

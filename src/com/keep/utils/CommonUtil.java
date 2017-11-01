@@ -19,7 +19,9 @@ import java.net.URL;
 import java.security.SecureRandom;
 
 /**
- * Created by hdb on 2017/6/27.
+ *
+ * @author chenxh
+ * @date 2017/6/27
  */
 public class CommonUtil {
     private static Logger logger = LogManager.getLogger(CommonUtil.class);

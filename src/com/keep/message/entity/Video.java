@@ -2,7 +2,9 @@ package com.keep.message.entity;
 
 /**
  * 视频类
- * Created by hdb on 2017/6/23.
+ *
+ * @author chenxh
+ * @date 2017/6/23
  */
 public class Video {
     // 媒体文件 ID

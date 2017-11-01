@@ -2,7 +2,9 @@ package com.keep.message.entity;
 
 /**
  * 图文类
- * Created by hdb on 2017/6/23.
+ *
+ * @author chenxh
+ * @date 2017/6/23
  */
 public class Article {
     // 图文消息名称

@@ -2,7 +2,9 @@ package com.keep.message.req;
 
 /**
  * 描述：请求消息的基类
- * Created by hdb on 2017/6/20.
+ *
+ * @author chenxh
+ * @date 2017/6/20
  */
 public class BaseMessage {
     // 开发者微信号

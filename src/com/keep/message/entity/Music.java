@@ -2,7 +2,9 @@ package com.keep.message.entity;
 
 /**
  * 音乐类
- * Created by hdb on 2017/6/23.
+ *
+ * @author chenxh
+ * @date 2017/6/23
  */
 public class Music {
     // 音乐标题

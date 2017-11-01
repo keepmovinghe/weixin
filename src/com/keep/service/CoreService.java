@@ -17,7 +17,9 @@ import java.util.Map;
 
 /**
  * 核心服务类
- * Created by hdb on 2017/6/26.
+ *
+ * @author chenxh
+ * @date 2017/6/26
  */
 public class CoreService {
 
@@ -46,7 +48,7 @@ public class CoreService {
             TextMessage textMessage = new TextMessage();
             textMessage.setToUserName(fromUserName);
             textMessage.setFromUserName(toUserName);
-            textMessage.setCreateTime(new Date().getTime());
+            textMessage.setCreateTime(System.currentTimeMillis());
             textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
 
             // 文本消息
@@ -107,7 +109,7 @@ public class CoreService {
                             newsMessage.setArticleCount(articleList.size());
                             newsMessage.setArticles(articleList);
                             newsMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_NEWS);
-                            newsMessage.setCreateTime(new Date().getTime());
+                            newsMessage.setCreateTime(System.currentTimeMillis());
 
                             respXml = MessageUtil.newsMessageToXml(newsMessage);
                             logger.info("respXml:{"+respXml+"}");

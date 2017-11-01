@@ -6,7 +6,9 @@ import java.util.List;
 
 /**
  * 回复图文消息类
- * Created by hdb on 2017/6/23.
+ *
+ * @author chenxh
+ * @date 2017/6/23
  */
 public class NewsMessage extends BaseMessage {
     // 图文消息个数，限制为 10 条以内

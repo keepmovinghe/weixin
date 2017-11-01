@@ -4,7 +4,9 @@ import com.keep.message.entity.Video;
 
 /**
  * 回复视频消息类
- * Created by hdb on 2017/6/23.
+ *
+ * @author chenxh
+ * @date 2017/6/23
  */
 public class VideoMessage extends BaseMessage {
     // 视频

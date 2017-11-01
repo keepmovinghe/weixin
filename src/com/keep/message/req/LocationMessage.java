@@ -2,7 +2,9 @@ package com.keep.message.req;
 
 /**
  * 地理位置消息类
- * Created by hdb on 2017/6/23.
+ *
+ * @author chenxh
+ * @date 2017/6/23
  */
 public class LocationMessage extends BaseMessage {
     // 地理位置纬度

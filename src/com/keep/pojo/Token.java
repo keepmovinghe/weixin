@@ -2,7 +2,9 @@ package com.keep.pojo;
 
 /**
  * 凭证类
- * Created by hdb on 2017/6/27.
+ *
+ * @author chenxh
+ * @date 2017/6/27
  */
 public class Token {
     // 接口访问凭证

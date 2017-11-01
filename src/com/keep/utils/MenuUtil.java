@@ -7,7 +7,9 @@ import org.apache.log4j.Logger;
 
 /**
  * 菜单工具类
- * Created by hdb on 2017/6/27.
+ *
+ * @author chenxh
+ * @date 2017/6/27
  */
 public class MenuUtil {
     private static Logger logger = LogManager.getLogger(MenuUtil.class);

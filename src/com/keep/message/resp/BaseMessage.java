@@ -2,7 +2,9 @@ package com.keep.message.resp;
 
 /**
  * 响应消息基类
- * Created by hdb on 2017/6/23.
+ *
+ * @author chenxh
+ * @date 2017/6/23
  */
 public class BaseMessage {
     // 接收方账号（收到的OpenId)

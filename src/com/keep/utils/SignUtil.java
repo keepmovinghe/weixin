@@ -6,7 +6,9 @@ import java.util.Arrays;
 
 /**
  * 请求校验工具类
- * Created by hdb on 2017/6/21.
+ *
+ * @author chenxh
+ * @date 2017/6/21
  */
 public class SignUtil {
     // Token,与开发模式接口配置的Token保持一致

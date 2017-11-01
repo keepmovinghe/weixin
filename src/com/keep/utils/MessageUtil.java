@@ -22,7 +22,9 @@ import java.util.Map;
 
 /**
  * 消息处理工具类
- * Created by hdb on 2017/6/26.
+ *
+ * @author chenxh
+ * @date 2017/6/26
  */
 public class MessageUtil {
     // 请求消息类型：文本

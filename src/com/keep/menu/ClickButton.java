@@ -2,7 +2,9 @@ package com.keep.menu;
 
 /**
  * click 类型按钮
- * Created by hdb on 2017/6/27.
+ *
+ * @author chenxh
+ * @date 2017/6/27
  */
 public class ClickButton extends Button {
     // 类型
