@@ -25,8 +25,9 @@ import java.security.SecureRandom;
  */
 public class CommonUtil {
     private static Logger logger = LogManager.getLogger(CommonUtil.class);
-
-    // 获取凭证
+    private static final String APPID = "wx30e5fadbd254a9d6";
+    private static final String APPSECRET = "ee2abbe571abcf0aa6383213ece0dccc";
+    // 获取凭证地址
     public static final String TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 
     /**
@@ -87,11 +88,16 @@ public class CommonUtil {
     }
 
     /**
-     * 获取接口访问凭证
-     * @param appid
-     * @param appsecret
+     * 获取接口访问凭证，如果本地 token 失效，从微信服务器获取
+     * @return
      */
-    public static Token getToken(String appid, String appsecret){
+    public static String getToken(){
+        return getToken(APPID,APPSECRET).getAccessToken();
+    }
+    /**
+     * 从微信服务器获取接口访问凭证
+     */
+    private static Token getToken(String appid, String appsecret){
         Token token = null;
         String requestUrl = TOKEN_URL.replace("APPID",appid).replace("APPSECRET",appsecret);
         // 发起 GET 请求获取凭证

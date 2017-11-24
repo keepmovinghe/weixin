@@ -15,8 +15,6 @@ import org.apache.log4j.Logger;
  */
 public class MenuManager {
     private static Logger logger = LogManager.getLogger(MenuManager.class);
-    private static final String APPID = "APPID";
-    private static final String APPSECRET = "APPSECRET";
 
     private static Menu getMenu(){
         ClickButton btn11 = new ClickButton();
@@ -101,10 +99,10 @@ public class MenuManager {
     }*/
 
     public static void main(String[] args){
-        Token token = CommonUtil.getToken(APPID,APPSECRET);
+        String token = CommonUtil.getToken();
         if(null != token) {
-            logger.info("凭证 token :{"+token.getAccessToken()+"}");
-            String menu = MenuUtil.getMenu(token.getAccessToken());
+            logger.info("凭证 token :{"+token+"}");
+            String menu = MenuUtil.getMenu(token);
             logger.info("菜单：{"+menu+"}");
         }
     }
