@@ -25,8 +25,8 @@ import java.security.SecureRandom;
  */
 public class CommonUtil {
     private static Logger logger = LogManager.getLogger(CommonUtil.class);
-    private static final String APPID = "wx30e5fadbd254a9d6";
-    private static final String APPSECRET = "ee2abbe571abcf0aa6383213ece0dccc";
+    private static final String APPID = "";
+    private static final String APPSECRET = "";
     // 获取凭证地址
     public static final String TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 
