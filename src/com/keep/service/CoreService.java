@@ -59,7 +59,8 @@ public class CoreService {
             switch (msgType){
                 // 文本消息
                 case MessageUtil.REQ_MESSAGE_TYPE_TEXT:
-                    respContent = "您发送的是文本消息！";
+                    respContent = "您发送的是文本消息！" +
+                            "OAuth2 网页授权：" +Constant.OAUTH2_URL.replace("APPID",Constant.APPID);
                     // 设置文本消息的内容
                     textMessage.setContent(respContent);
                     respXml = MessageUtil.messageToXml(textMessage);

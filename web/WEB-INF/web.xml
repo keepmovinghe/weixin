@@ -13,6 +13,15 @@
     </servlet-mapping>
     
     <servlet>
+        <servlet-name>oauthServlet</servlet-name>
+        <servlet-class>com.keep.servlet.OAuthServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>oauthServlet</servlet-name>
+        <url-pattern>/oauthServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
         <servlet-name>Lo4jInitServlet</servlet-name>
         <servlet-class>com.keep.servlet.Log4jInitServlet</servlet-class>
         

@@ -1,22 +1,29 @@
 package com.keep.utils;
 
+import com.keep.pojo.SNSUserInfo;
 import com.keep.pojo.Token;
+import com.keep.pojo.WeixinOauth2Token;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.chainsaw.Main;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
+import javax.servlet.jsp.tagext.TryCatchFinally;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ConnectException;
 import java.net.URL;
+import java.nio.file.Watchable;
 import java.security.SecureRandom;
+import java.util.List;
 
 /**
  *
@@ -25,10 +32,6 @@ import java.security.SecureRandom;
  */
 public class CommonUtil {
     private static Logger logger = LogManager.getLogger(CommonUtil.class);
-    private static final String APPID = "";
-    private static final String APPSECRET = "";
-    // 获取凭证地址
-    public static final String TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 
     /**
      * 发送 http 请求
@@ -92,14 +95,14 @@ public class CommonUtil {
      * @return
      */
     public static String getToken(){
-        return getToken(APPID,APPSECRET).getAccessToken();
+        return getToken(Constant.APPID,Constant.APPSECRET).getAccessToken();
     }
     /**
      * 从微信服务器获取接口访问凭证
      */
     private static Token getToken(String appid, String appsecret){
         Token token = null;
-        String requestUrl = TOKEN_URL.replace("APPID",appid).replace("APPSECRET",appsecret);
+        String requestUrl = Constant.TOKEN_URL.replace("APPID",appid).replace("APPSECRET",appsecret);
         // 发起 GET 请求获取凭证
         JSONObject jsonObject = httpsRequest(requestUrl,"GET", null);
         if(null != jsonObject){
@@ -113,5 +116,89 @@ public class CommonUtil {
             }
         }
         return token;
+    }
+
+    /**
+     * 获取网页授权凭证
+     * @param code
+     * @return WeixinOauth2Token
+     */
+    public static WeixinOauth2Token getOauth2AccessToken(String code){
+        WeixinOauth2Token wat = null;
+        // 获取网页授权凭证
+        String requestUrl = Constant.OAUTH2_TOKEN_URL.replace("APPID",Constant.APPID).replace("SECRET",Constant.APPSECRET).replace("CODE",code);
+        wat = getWeixinOauth2Token(requestUrl,"获取网页授权凭证失败");
+        return wat;
+    }
+
+    /**
+     *  刷新网页授权凭证
+     * @param refreshToken
+     * @return WeixinOauth2Token
+     */
+    public static WeixinOauth2Token refreshOauth2AcccessToken(String refreshToken){
+        WeixinOauth2Token wat = null;
+        String requestUrl = Constant.REFRESH_OAUTH2_TOKEN_URL.replace("APPID",Constant.APPID).replace("REFRESH_TOKEN",refreshToken);
+        // 刷新网页授权凭证
+        wat = getWeixinOauth2Token(requestUrl,"刷新网页授权凭证失败");
+        return wat;
+    }
+
+    /**
+     * 请求 access_token
+     * @param requestUrl
+     * @param printMsg
+     * @return
+     */
+    private static WeixinOauth2Token getWeixinOauth2Token(String requestUrl, String printMsg) {
+        WeixinOauth2Token wat = null;
+        JSONObject jsonObject = httpsRequest(requestUrl,"GET",null);
+        if(null != jsonObject){
+            try {
+                wat = new WeixinOauth2Token();
+                wat.setAccessToken(jsonObject.getString("access_token"));
+                wat.setExpiresIn(jsonObject.getInt("expires_in"));
+                wat.setRefreshToken(jsonObject.getString("refresh_token"));
+                wat.setOpenId(jsonObject.getString("open_id"));
+                wat.setScope(jsonObject.getString("scope"));
+            }catch (Exception e){
+                wat = null;
+                int errorCode = jsonObject.getInt("errcode");
+                String errorMsg = jsonObject.getString("errmsg");
+                logger.info(printMsg + " errcode:{"+errorCode+"} errmsg:{"+errorMsg+"}");
+            }
+        }
+        return wat;
+    }
+
+    /**
+     *  通过网页授权获取用户信息
+     * @param accessToken 网页授权接口调用凭证
+     * @param openId 用户标识
+     * @return SNSUserInfo
+     */
+    public static SNSUserInfo getSNSUserInfo(String accessToken, String openId){
+        SNSUserInfo snsUserInfo = null;
+        String requestUrl = Constant.SNS_USERINFO_URL.replace("ACCESS_TOKEN",accessToken).replace("OPENID",openId);
+        JSONObject jsonObject = httpsRequest(requestUrl,"GET",null);
+        if(null != jsonObject){
+            try {
+                snsUserInfo = new SNSUserInfo();
+                snsUserInfo.setOpenId(jsonObject.getString("openid"));
+                snsUserInfo.setNickName(jsonObject.getString("nickname"));
+                snsUserInfo.setSex(jsonObject.getInt("sex"));
+                snsUserInfo.setCountry(jsonObject.getString("country"));
+                snsUserInfo.setProvince(jsonObject.getString("province"));
+                snsUserInfo.setCity(jsonObject.getString("city"));
+                snsUserInfo.setHeadImgUrl(jsonObject.getString("headimgurl"));
+                snsUserInfo.setPrivilegeList(JSONArray.toList(jsonObject.getJSONArray("privilege"),List.class));
+            }catch (Exception e){
+                snsUserInfo = null;
+                int errorCode = jsonObject.getInt("errcode");
+                String errorMsg = jsonObject.getString("errmsg");
+                logger.info("获取用户信息失败 errcode:{"+errorCode+"} errmsg:{"+errorMsg+"}");
+            }
+        }
+        return snsUserInfo;
     }
 }
